@@ -61,7 +61,7 @@ class SocksProxy(StreamRequestHandler):
                 remote = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 remote.connect((address, port))
                 bind_address = remote.getsockname()
-                logging.info('Connected to %s %s' % (address, port))
+                logging.info(f'Connected to {address} {port}')
             else:
                 self.server.close_request(self.request)
 
@@ -84,10 +84,7 @@ class SocksProxy(StreamRequestHandler):
         self.server.close_request(self.request)
 
     def get_available_methods(self, n):
-        methods = []
-        for i in range(n):
-            methods.append(ord(self.connection.recv(1)))
-        return methods
+        return [ord(self.connection.recv(1)) for _ in range(n)]
 
     def verify_credentials(self):
         version = ord(self.connection.recv(1))

